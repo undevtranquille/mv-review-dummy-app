@@ -1,0 +1,33 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - backend-venv:/app/.venv
+    environment:
+      - DJANGO_DEBUG=True
+    networks:
+      - movie-review-net
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - frontend-node-modules:/app/node_modules
+    environment:
+      - VITE_API_BASE_URL=http://localhost:8000/api
+    depends_on:
+      - backend
+    networks:
+      - movie-review-net
+
+volumes:
+  backend-venv:
+  frontend-node-modules:
+
+networks:
+  movie-review-net:
