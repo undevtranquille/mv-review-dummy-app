@@ -1,0 +1,26 @@
+[project]
+name = "movie-review-backend"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "Rémi", email = "remi.barbe.work@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "django>=6.1",
+    "django-cors-headers>=4.9.0",
+    "djangorestframework>=3.18.0",
+]
+
+[project.scripts]
+movie-review-backend = "movie_review_backend:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-django>=4.14.0",
+]
