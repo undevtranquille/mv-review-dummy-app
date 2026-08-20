@@ -19,5 +19,16 @@ export const useMoviesStore = defineStore('movies', {
       const response = await apiClient.patch<MovieDetail>(`/movies/${id}/`, payload)
       return response.data
     },
+    async fetchActors() {
+        const response = await apiClient.get('/actors/')
+        return response.data
+    },
+    async createActor(firstName: string, lastName: string) {
+        const response = await apiClient.post('/actors/', {
+            first_name: firstName,
+            last_name: lastName,
+        })
+        return response.data
+    },
   },
 })
