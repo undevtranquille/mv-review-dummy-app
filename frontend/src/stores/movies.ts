@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import apiClient from '@/api/client'
-import type { MovieDetail } from '@/types/movies'
+import type { MovieDetail } from '@/types/movie'
 
 export const useMoviesStore = defineStore('movies', {
   actions: {

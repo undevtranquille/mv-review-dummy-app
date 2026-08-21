@@ -30,9 +30,10 @@ const actorOptions = computed(() =>
 )
 
 async function loadMovie() {
-  movie.value = await store.fetchMovieDetail(movieId)
-  description.value = movie.value.description
-  selectedActorIds.value = movie.value.actors.map((a) => a.id)
+  const detail = await store.fetchMovieDetail(movieId)
+   movie.value = detail
+   description.value = detail.description
+   selectedActorIds.value = detail.actors.map((a) => a.id)
 }
 
 async function loadAllActors() {
