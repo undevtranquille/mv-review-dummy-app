@@ -2,13 +2,17 @@ from django.core.management.base import BaseCommand
 from django.contrib.auth.models import User
 from reviews.models import Actor, Movie, Review
 
+import os
+
+ADMIN_PASSWORD = os.environ.get("DJANGO_ADMIN_PASSWORD", "admin")
+
 class Command(BaseCommand):
     help = "Seed the database with dummy data for demo purposes."
 
     def handle(self, *args, **options):
         if not User.objects.filter(username="admin").exists():
-            User.objects.create_superuser("admin", "admin@admin.com", "admin")
-            self.stdout.write("Superuser 'admin' created (password: admin).")
+            User.objects.create_superuser("admin", "admin@admin.com", ADMIN_PASSWORD)
+            self.stdout.write("Superuser 'admin' created.")
         
         if Movie.objects.exists():
             self.stdout.write("Data already present, skipping seed.")
