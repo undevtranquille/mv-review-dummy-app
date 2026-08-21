@@ -131,7 +131,7 @@ function showConfirmation(text: string) {
         <div class="d-flex ga-2 mt-2">
           <v-text-field v-model="newActorFirstName" label="Prénom" density="compact" variant="outlined" />
           <v-text-field v-model="newActorLastName" label="Nom" density="compact" variant="outlined" />
-          <v-btn @click="addNewActor" icon="mdi-plus" variant="tonal" />
+          <v-btn @click="addNewActor" icon="mdi-plus" variant="tonal" :disabled="!newActorFirstName || !newActorLastName"/>
         </div>
       </v-card-text>
       <v-card-actions>
