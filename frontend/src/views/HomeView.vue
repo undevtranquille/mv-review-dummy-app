@@ -14,6 +14,16 @@ const pageSize = 5
 
 const currentPage = ref(Number(route.query.page) || 1)
 
+watch(
+  () => route.query.page,
+  (newPage) => {
+    const page = Number(newPage) || 1
+    if (page !== currentPage.value) {
+      currentPage.value = page
+    }
+  }
+)
+
 async function loadMovies(page: number) {
   const data = await store.fetchMovies(page)
   movies.value = data.results
