@@ -23,7 +23,7 @@ class MovieViewSet(
     pagination_class = MoviePagination
     
     def get_queryset(self):
-        return Movie.objects.annotate(average_grade=Avg("reviews__grade"))
+        return Movie.objects.annotate(average_grade=Avg("reviews__grade")).order_by("title")
     
     def get_serializer_class(self):
         if self.action == "list":
