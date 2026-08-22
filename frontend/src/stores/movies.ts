@@ -14,6 +14,8 @@ export const useMoviesStore = defineStore('movies', {
     },
     async addReview(movieId: number, grade: number) {
       await apiClient.post('/reviews/', { movie: movieId, grade })
+      const response = await apiClient.get<MovieDetail>(`/movies/${movieId}/`)
+      return response.data
     },
     async updateMovie(id: number, payload: { description?: string; actor_ids?: number[] }) {
       const response = await apiClient.patch<MovieDetail>(`/movies/${id}/`, payload)

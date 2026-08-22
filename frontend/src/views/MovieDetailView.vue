@@ -50,14 +50,14 @@ function goBack() {
 }
 
 async function saveDescription() {
-  await store.updateMovie(movieId, { description: description.value })
-  await loadMovie()
+  const updated = await store.updateMovie(movieId, { description: description.value })
+  movie.value = updated
   showConfirmation('Description mise à jour')
 }
 
 async function saveActors() {
-  await store.updateMovie(movieId, { actor_ids: selectedActorIds.value })
-  await loadMovie()
+  const updated = await store.updateMovie(movieId, { actor_ids: selectedActorIds.value })
+  movie.value = updated
   showConfirmation('Acteurs mis à jour')
 }
 
@@ -73,8 +73,8 @@ async function addNewActor() {
 
 async function submitReview() {
   if (reviewGrade.value < 1) return
-  await store.addReview(movieId, reviewGrade.value)
-  await loadMovie()
+  const updated = await store.addReview(movieId, reviewGrade.value)
+  movie.value = updated
   reviewGrade.value = 0
   showConfirmation('Avis ajouté, merci !')
 }
