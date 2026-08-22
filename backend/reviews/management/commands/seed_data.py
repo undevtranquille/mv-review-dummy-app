@@ -4,7 +4,7 @@ from reviews.models import Actor, Movie, Review
 
 import os
 
-ADMIN_PASSWORD = os.environ.get("DJANGO_ADMIN_PASSWORD", "admin")
+ADMIN_PASSWORD = os.environ.get("DJANGO_ADMIN_PASSWORD")
 
 class Command(BaseCommand):
     help = "Seed the database with dummy data for demo purposes."

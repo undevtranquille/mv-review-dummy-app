@@ -7,8 +7,9 @@ services:
       - ./backend:/app
       - backend-venv:/app/.venv
     environment:
-      - DJANGO_DEBUG=True
-      - DJANGO_ADMIN_PASSWORD=admin
+      - DJANGO_DEBUG=${DJANGO_DEBUG}
+      - DJANGO_ADMIN_PASSWORD=${DJANGO_ADMIN_PASSWORD}
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
     networks:
       - movie-review-net
 

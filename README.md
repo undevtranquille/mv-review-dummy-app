@@ -4,11 +4,17 @@
 
 ## Lancer le projet
 
-Depuis la racine du repo :
+Depuis la racine du repo, créer d'abord le fichier de configuration locale à partir du template fourni :
 
-```bash
+\`\`\`bash
+cp .env.example .env
+\`\`\`
+
+Puis lancer les containers :
+
+\`\`\`bash
 docker compose up --build
-```
+\`\`\`
 
 Au premier démarrage, le backend applique automatiquement les migrations et remplit la base avec des données de démonstration (films, acteurs, avis). Ce seed est idempotent : il ne s'exécute que si la base est vide, donc relancer `docker compose up` plusieurs fois ne duplique rien.
 
